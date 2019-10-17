@@ -75,7 +75,30 @@
     </div>
 </div>
 <?php foreach ($role as $r) : ?>
-<div class="modal fade" id="modalEdit<?= $r['id'] ?>">
+<div class="modal fade" id="modalEdit<?= $r['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="newRoleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newRoleModalLabel">Add new role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('admin/role'); ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="role" name="role" placeholder="Role name" value="<?= $r['role'] ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <div class="modal fade" id="modalEdit<?= $r['id'] ?>">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -100,5 +123,5 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <?php endforeach; ?>

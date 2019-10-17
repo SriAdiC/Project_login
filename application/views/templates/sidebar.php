@@ -33,15 +33,15 @@
 
         <!-- siapkan submenu sesuai menu -->
         <?php
-        $menu_id = $m['id'];
-        $querySubMenu = "SELECT *
+            $menu_id = $m['id'];
+            $querySubMenu = "SELECT *
                         FROM `user_sub_menu`
                         WHERE `user_sub_menu`.`menu_id` = $menu_id
                         AND `is_active` = 1;
                     ";
 
-        $subMenu = $this->db->query($querySubMenu)->result_array();
-        ?>
+            $subMenu = $this->db->query($querySubMenu)->result_array();
+            ?>
 
         <?php foreach ($subMenu as $sm) : ?>
             <!-- Nav Item - Dashboard -->
@@ -53,24 +53,24 @@
                 <a class="nav-link pb-0" href="<?= base_url($sm['url']); ?>">
                     <i class="<?= $sm['icon']; ?>"></i>
                     <span><?= $sm['title']; ?></span></a>
-            </li>
+                </li>
+            <?php endforeach; ?>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider mt-3">
+
         <?php endforeach; ?>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider mt-3">
+        <li class="nav-item">
+            <a class="nav-link mb-3 log-out" href="<?= base_url('auth/logout'); ?>">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>LogOut</span></a>
+        </li>
 
-    <?php endforeach; ?>
-
-    <li class="nav-item">
-        <a class="nav-link mb-3 log-out" href="<?= base_url('auth/logout'); ?>">
-            <i class="fas fa-fw fa-sign-out-alt"></i>
-            <span>LogOut</span></a>
-    </li>
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
 
 </ul>
 <!-- End of Sidebar -->
